@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/padding"
+    android:background="@color/transparent_grey_white"
+    android:id="@+id/transparentBackground">
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/padding"
+    android:background="@color/splashScreencolor"
+    >
+
+    <ImageView
+        android:id="@+id/imagePoster"
+        android:layout_width="@dimen/size_of_poster_width"
+        android:layout_height="@dimen/size_of_poster_height"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorLightBlue" />
+
+    <TextView
+        android:id="@+id/textTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/title"
+        android:layout_gravity="center_horizontal"
+        android:layout_toRightOf="@+id/imagePoster"
+        android:layout_marginLeft="@dimen/padding"
+        android:layout_alignTop="@+id/imagePoster"/>
+
+    <TextView
+        android:id="@+id/textYear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_toRightOf="@id/textTitle"
+        android:text="@string/year"
+        android:layout_marginLeft="@dimen/padding"
+        android:layout_alignBottom="@id/textTitle"
+        android:textSize="15dp"
+        />
+
+    <TextView
+        android:id="@+id/textType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/imagePoster"
+        android:layout_below="@id/textTitle"
+        android:text="@string/type"
+        android:layout_marginLeft="@dimen/padding"
+        />
+
+    <TextView
+        android:id="@+id/textRuntime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/textType"
+        android:layout_below="@id/textTitle"
+        android:text="@string/runtime"
+        android:layout_marginLeft="@dimen/padding"
+        />
+
+    <TextView
+        android:id="@+id/textGenre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/textRuntime"
+        android:layout_below="@id/textTitle"
+        android:text="@string/genre"
+        android:layout_marginLeft="@dimen/padding"
+        />
+
+    <TextView
+        android:id="@+id/textSummary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/imagePoster"
+        android:layout_below="@id/textType"
+        android:text="@string/summary"
+        android:layout_marginLeft="@dimen/padding"
+        android:layout_marginTop="@dimen/fab_margin"
+        android:layout_alignParentRight="true"
+        />
+
+    <TextView
+        android:id="@+id/textDirector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/imagePoster"
+        android:layout_below="@id/textSummary"
+        android:text="@string/director"
+        android:layout_marginLeft="@dimen/padding"
+        android:layout_marginTop="@dimen/fab_margin"
+        />
+
+    <TextView
+        android:id="@+id/textDirectorContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/textDirector"
+        android:layout_below="@id/textSummary"
+        android:layout_marginLeft="@dimen/padding"
+        android:layout_marginTop="@dimen/fab_margin"
+        android:layout_alignParentRight="true"
+        />
+
+    <TextView
+        android:id="@+id/textCasting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/imagePoster"
+        android:layout_below="@id/textDirector"
+        android:text="@string/actors"
+        android:layout_marginLeft="@dimen/padding"
+        android:layout_marginTop="@dimen/padding"
+        />
+
+    <TextView
+        android:id="@+id/textCastingContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/textCasting"
+        android:layout_below="@id/textDirector"
+        android:layout_marginLeft="@dimen/padding"
+        android:layout_marginTop="@dimen/padding"
+        android:layout_alignParentRight="true"
+        android:layout_alignBottom="@id/imagePoster"
+        />
+
+    <Button
+        android:id="@+id/buttonTrack"
+        android:layout_width="@dimen/size_of_button_width"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textCasting"
+        android:layout_marginTop="@dimen/fab_margin"
+        android:text="@string/track"
+        android:background="@color/colorButtonResult"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentLeft="true"
+        />
+
+    <Button
+        android:id="@+id/buttonShare"
+        android:layout_width="@dimen/size_of_button_width"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/buttonTrack"
+        android:layout_below="@id/textCasting"
+        android:layout_marginTop="@dimen/fab_margin"
+        android:text="@string/shareOnFacebook"
+        android:background="@color/colorButtonResult"
+        android:layout_alignParentRight="true"
+
+        />
+
+</RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,29 @@
+<resources>
+    <string name="selection_adapted">Selected for you :</string>
+    <string name="selection_trending">Current trending :</string>
+    <string name="app_name">Procrastinator</string>
+    <string name="app_name_accueil">Accueil</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_search">Search</string>
+    <string name="advanced_search">Advanced search</string>
+    <string name="title"> Title </string>
+    <string name="year"> (Year) </string>
+    <string name="duration"> Duration in min    | </string>
+    <string name="type"> Type   | </string>
+    <string name="releaseDate"> Release Date </string>
+    <string name="summary"> Summary </string>
+    <string name="director"> Director : </string>
+    <string name="stars"> Stars : </string>
+    <string name="track"> Track This ! </string>
+    <string name="shareOnFacebook"> Share on Facebook </string>
+    <string name="stopTracking"> Stop Tracking </string>
+    <string name="nextEpisodeDate"> Next Episode : </string>
+    <string name="markWatched"> Mark Watched </string>
+    <string name="allEpisodes"> All Episodes </string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="genre">Genre</string>
+    <string name="runtime">Run Time</string>
+    <string name="actors">Actors</string>
+</resources>

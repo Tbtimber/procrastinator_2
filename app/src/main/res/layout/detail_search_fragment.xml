@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorGreyLight">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Type : "
+        android:id="@+id/textView_type"
+        android:layout_alignLeft="@+id/textView_genre"
+        android:layout_alignStart="@+id/textView_genre"
+        android:layout_marginTop="@dimen/margin_detail"/>
+
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/content_type"
+        android:layout_toRightOf="@+id/textView_type"
+        android:layout_alignTop="@+id/textView_type">
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TV show"
+            android:id="@+id/checkBox_TV_show"
+            />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Movie"
+            android:id="@+id/checkBox_movie"
+            android:layout_toEndOf="@+id/checkBox_TV_show"/>
+
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Genre : "
+        android:id="@+id/textView_genre"
+        android:layout_below="@+id/content_type"
+        android:layout_alignLeft="@+id/editText_search"
+        android:layout_alignStart="@+id/editText_search"
+        android:layout_marginTop="@dimen/margin_detail"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textView_genre"
+        android:layout_toRightOf="@+id/textView_genre"
+        android:layout_toEndOf="@+id/textView_genre"
+        android:id="@+id/content_genre">
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Action"
+            android:id="@+id/checkBox_action"
+            />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Adventure"
+            android:id="@+id/checkBox_adventure"
+            android:layout_toEndOf="@+id/checkBox_action"/>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Comedy"
+            android:id="@+id/checkBox_comedy"
+            android:layout_toEndOf="@+id/checkBox_adventure"/>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Documentary"
+            android:id="@+id/checkBox_documentary"
+            android:layout_below="@+id/checkBox_action"/>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Drama"
+            android:id="@+id/checkBox_drama"
+            android:layout_toEndOf="@+id/checkBox_documentary"
+            android:layout_alignTop="@+id/checkBox_documentary"/>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Horror"
+            android:id="@+id/checkBox_horror"
+            android:layout_below="@+id/checkBox_documentary"
+            />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Romance"
+            android:id="@+id/checkBox_romance"
+            android:layout_toEndOf="@+id/checkBox_horror"
+            android:layout_alignTop="@+id/checkBox_horror"/>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sci-fi"
+            android:id="@+id/checkBox_sci_fi"
+            android:layout_toEndOf="@+id/checkBox_romance"
+            android:layout_alignTop="@+id/checkBox_romance"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Actor/Actress : "
+        android:id="@+id/textView_actor"
+        android:layout_alignLeft="@+id/editText_search"
+        android:layout_alignStart="@+id/editText_search"
+        android:layout_below="@+id/content_genre"
+        android:layout_marginTop="@dimen/margin_detail"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText_actor"
+        android:layout_alignBaseline="@+id/textView_actor"
+        android:layout_toRightOf="@+id/textView_actor"
+        android:layout_toEndOf="@+id/textView_actor"
+        android:layout_below="@+id/content_genre"
+        android:gravity="bottom"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Director : "
+        android:id="@+id/textView_director"
+        android:layout_below="@+id/editText_actor"
+        android:layout_alignLeft="@+id/textView_actor"
+        android:layout_alignStart="@+id/textView_actor"
+        android:layout_marginTop="@dimen/margin_detail"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText_director"
+        android:layout_below="@+id/textView_actor"
+        android:layout_toRightOf="@+id/textView_director"
+        android:layout_toEndOf="@+id/textView_director"
+        android:layout_alignBaseline="@+id/textView_director"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Year : "
+        android:id="@+id/textView_year"
+        android:layout_below="@+id/editText_director"
+        android:layout_alignLeft="@+id/textView_director"
+        android:layout_alignStart="@+id/textView_director"
+        android:layout_marginTop="@dimen/margin_detail"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText_year"
+        android:layout_below="@+id/textView_director"
+        android:layout_toRightOf="@+id/textView_year"
+        android:layout_toEndOf="@+id/textView_year"
+        android:layout_alignBaseline="@+id/textView_year"/>
+
+
+</RelativeLayout>
