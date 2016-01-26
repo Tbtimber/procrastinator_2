@@ -25,7 +25,10 @@ public class Serie extends SearchResult{
     @SerializedName("title")
     public String title;
 
-
+    @Override
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
     @SerializedName("popularity")
     public String popularity;

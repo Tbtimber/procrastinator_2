@@ -27,17 +27,17 @@ public class ProcrastinatorDatabaseContract implements BaseColumns {
     // Table scripts creation
     private static final String TABLE_GENERIC_CREATE_SCRIPT_PREFIX = "CREATE TABLE IF NOT EXISTS ";
     private static final String TABLE_IMAGES_CREATE_SCRIPT_SUFFIX = "(" + _ID + " INTEGER PRIMARY KEY, " +
-            RELEASE_DATE + " TEXT NOT NULL, " +
+            //RELEASE_DATE + " TEXT , " +
             PLOT + " TEXT NOT NULL, "+
             TITLE + " TEXT NOT NULL, "+
-            MOVIE_PICTURE + " TEXT NOT NULL, "+
-            GENRE + " TEXT NOT NULL, "+
-            TYPE + " TEXT NOT NULL, "+
-            DIRECTOR + " TEXT NOT NULL, "+
-            WRITER + " TEXT NOT NULL, "+
-            ACTORS + " TEXT NOT NULL, "+
-            RUNTIME + " TEXT NOT NULL, "+
-            COUNTRY + " TEXT NOT NULL)";
+            MOVIE_PICTURE + " TEXT NOT NULL "+
+            //GENRE + " TEXT , "+
+            //TYPE + " TEXT , "+
+            //DIRECTOR + " TEXT , "+
+            //WRITER + " TEXT , "+
+            //ACTORS + " TEXT , "+
+            //RUNTIME + " TEXT , "+
+            /*COUNTRY + " TEXT */")";
 
     public static final String TABLE_MOVIES_CREATE_SCRIPT = TABLE_GENERIC_CREATE_SCRIPT_PREFIX +
             TABLE_MOVIES + TABLE_IMAGES_CREATE_SCRIPT_SUFFIX;
@@ -45,17 +45,17 @@ public class ProcrastinatorDatabaseContract implements BaseColumns {
     // The projections
     public static final String[] PROJECTION_FULL = new String[]{
             _ID,
-            RELEASE_DATE,
+            //RELEASE_DATE,
             PLOT,
             TITLE,
             MOVIE_PICTURE,
-            GENRE,
-            TYPE,
-            DIRECTOR,
-            WRITER,
-            ACTORS,
-            RUNTIME,
-            COUNTRY
+            //GENRE,
+            //TYPE,
+            //DIRECTOR,
+            //WRITER,
+            //ACTORS,
+            //RUNTIME,
+            //COUNTRY
     };
 
     // Selections
@@ -69,7 +69,7 @@ public class ProcrastinatorDatabaseContract implements BaseColumns {
     public static final String SELECTION_BY_COUNTRY = COUNTRY + "=?";
 
     // Content provider
-    public static final String CONTENT_PROVIDER_MOVIES_AUTHORITY = "theophanemarteau.database.MovieAuthority";
+    public static final String CONTENT_PROVIDER_MOVIES_AUTHORITY = "com.procrastinator.isen.procrastinator_2.databaseAuthority";
     public static final Uri MOVIES_URI = Uri.parse("content://" + CONTENT_PROVIDER_MOVIES_AUTHORITY + "/" + TABLE_MOVIES);
     public static final String MOVIES_CONTENT_TYPE = "vnd.android.cursor.dir/vnd.wltwitter.tweets";
 }

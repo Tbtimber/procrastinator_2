@@ -11,6 +11,8 @@
     <color name="colorButtonResult">#FFFF8400</color>
     <color name="colorLightBlue">#FF44BBE3</color>
     <color name="splashScreencolor">#FD7E27</color>
-    <color name="darkOrange">#FD4427</color>
+    <color name="darkOrange">#FD5538</color>
     <color name="transparent_grey_white">#88AAAAAA</color>
+    <color name="transparent_white">#22FFFFFF</color>
+    <color name="transparent">#00FFFFFF</color>
 </resources>

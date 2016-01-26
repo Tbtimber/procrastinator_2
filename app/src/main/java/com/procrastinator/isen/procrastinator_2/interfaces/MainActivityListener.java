@@ -10,5 +10,6 @@ import com.procrastinator.isen.procrastinator_2.imdbRetrieval.SearchResult;
 public interface MainActivityListener {
     void showDetail(SearchResult detail);
     void dropDetail();
+    void hasTracked(String title);
 }
 

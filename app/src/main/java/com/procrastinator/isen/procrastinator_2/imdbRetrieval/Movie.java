@@ -17,6 +17,11 @@ public class Movie extends SearchResult {
     public String release_date;
 
     @Override
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    @Override
     public String getTitle() {
         return title;
     }

@@ -4,6 +4,7 @@ import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,11 +21,13 @@ import android.view.inputmethod.InputMethod;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.procrastinator.isen.procrastinator_2.fragments.DetailSearchFragment;
 import com.procrastinator.isen.procrastinator_2.fragments.DetailViewFragment;
 import com.procrastinator.isen.procrastinator_2.fragments.ResultFragment;
 import com.procrastinator.isen.procrastinator_2.fragments.SelectionsFragment;
+import com.procrastinator.isen.procrastinator_2.fragments.TrackedFragment;
 import com.procrastinator.isen.procrastinator_2.imdbRetrieval.SearchResult;
 import com.procrastinator.isen.procrastinator_2.interfaces.MainActivityListener;
 import com.procrastinator.isen.procrastinator_2.util.Proc_Constants;
@@ -105,7 +108,9 @@ public class MainActivity extends AppCompatActivity
                 setDetailSearchFragment();
             }
         } else if (id == R.id.nav_suivi) {
-
+            if(!(currentFragment instanceof TrackedFragment)) {
+                setTrackedFragment();
+            }
         } else if (id == R.id.nav_settings) {
 
         } else if (id == R.id.nav_share) {
@@ -120,33 +125,37 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-    public void detachCurrentFragment() {
+    public void placeNewFragment() {
         android.support.v4.app.FragmentManager manager = getSupportFragmentManager();
         android.support.v4.app.FragmentTransaction transaction = manager.beginTransaction();
-        transaction.detach(currentFragment).commit();
+        transaction.setCustomAnimations(R.anim.enter_anim, R.anim.exit_anim);
+        transaction.replace(R.id.main_container, currentFragment).commit();
     }
+
     public void setResultFragment() {
         if(currentFragment != null) {
             if(currentFragment instanceof ResultFragment) {
                 ((ResultFragment) currentFragment).newSearch(((SearchView) findViewById(R.id.test_searchBar)).getQuery().toString());
                 return;
-            } else {
+            }/* else {
                 detachCurrentFragment();
-            }
+            }*/
         }
         if(detailViewFragment != null) {
             removeDetailViewFragment();
         }
-        Log.e("Detaching", "Attaching result Fragment");
-        android.support.v4.app.FragmentManager manager = getSupportFragmentManager();
-        android.support.v4.app.FragmentTransaction transaction = manager.beginTransaction();
 
         String str = ((SearchView) findViewById(R.id.test_searchBar)).getQuery().toString();
         currentFragment = new ResultFragment();
         final Bundle bundle = new Bundle();
         bundle.putString("search_string", str);
         currentFragment.setArguments(bundle);
-        transaction.add(R.id.main_container, currentFragment).commit();
+
+        placeNewFragment();
+        /*android.support.v4.app.FragmentManager manager = getSupportFragmentManager();
+        android.support.v4.app.FragmentTransaction transaction = manager.beginTransaction();
+        transaction.setCustomAnimations(R.anim.enter_anim, R.anim.exit_anim);
+        transaction.add(R.id.main_container, currentFragment).commit();*/
 
     }
     public void setResultFragmentWithDetail() {
@@ -155,34 +164,41 @@ public class MainActivity extends AppCompatActivity
     public void removeDetailViewFragment() {
         android.support.v4.app.FragmentManager manager = getSupportFragmentManager();
         android.support.v4.app.FragmentTransaction transaction = manager.beginTransaction();
+        transaction.setCustomAnimations(R.anim.enter_anim, R.anim.exit_anim);
         transaction.detach(detailViewFragment).commit();
         detailViewFragment = null;
     }
-    public void setDetailSearchFragment() {
-        if(currentFragment != null) {
-            detachCurrentFragment();
+    public void setTrackedFragment() {
+        if(detailViewFragment != null) {
+            removeDetailViewFragment();
         }
+        currentFragment = new TrackedFragment();
+        placeNewFragment();
+    }
+    public void setDetailSearchFragment() {
+        /*if(currentFragment != null) {
+            detachCurrentFragment();
+        }*/
         if(detailViewFragment != null) {
             removeDetailViewFragment();
         }
         currentFragment = new DetailSearchFragment();
-        android.support.v4.app.FragmentManager manager = getSupportFragmentManager();
-        android.support.v4.app.FragmentTransaction transaction = manager.beginTransaction();
-        transaction.add(R.id.main_container, currentFragment, "selections_fragment");
-        transaction.commit();
+        placeNewFragment();
     }
     public void setSelectionsFragment() {
-        if(currentFragment != null) {
+        /*if(currentFragment != null) {
             detachCurrentFragment();
-        }
+        }*/
         if(detailViewFragment != null) {
             removeDetailViewFragment();
         }
         currentFragment = new SelectionsFragment();
-        android.support.v4.app.FragmentManager manager = getSupportFragmentManager();
+        placeNewFragment();
+        /*android.support.v4.app.FragmentManager manager = getSupportFragmentManager();
         android.support.v4.app.FragmentTransaction transaction = manager.beginTransaction();
+        transaction.setCustomAnimations(R.anim.enter_anim, R.anim.exit_anim);
         transaction.add(R.id.main_container, currentFragment, "selections_fragment");
-        transaction.commit();
+        transaction.commit();*/
     }
     public void setupMenuDrawerAndResearchBar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -242,11 +258,17 @@ public class MainActivity extends AppCompatActivity
         android.support.v4.app.FragmentManager manager = getSupportFragmentManager();
         android.support.v4.app.FragmentTransaction transaction = manager.beginTransaction();
         transaction.add(R.id.main_container, detailViewFragment, "selections_fragment");
+        transaction.setCustomAnimations(R.anim.enter_anim, R.anim.exit_anim);
         transaction.commit();
     }
     @Override
     public void dropDetail() {
         if(detailViewFragment != null)
             removeDetailViewFragment();
+    }
+
+    @Override
+    public void hasTracked(String title) {
+        Toast.makeText(this, "Tracked : "+title, Toast.LENGTH_LONG).show();
     }
 }

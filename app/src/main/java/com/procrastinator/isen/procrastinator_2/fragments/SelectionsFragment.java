@@ -64,5 +64,10 @@ public class SelectionsFragment extends android.support.v4.app.Fragment implemen
         mainActivityListener.dropDetail();
     }
 
+    @Override
+    public void hasTracked(String title) {
+
+    }
+
 
 }

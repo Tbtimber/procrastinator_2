@@ -8,7 +8,7 @@
     >
 
     <ImageView
-        android:id="@+id/imagePoster"
+        android:id="@+id/image_tracked_Poster"
         android:layout_width="@dimen/size_of_poster_width"
         android:layout_height="@dimen/size_of_poster_height"
         android:layout_alignParentLeft="true"
@@ -16,13 +16,13 @@
         android:background="@color/colorLightBlue" />
 
     <TextView
-        android:id="@+id/textTitle"
+        android:id="@+id/text_tracked_Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Title"
         android:layout_gravity="center_horizontal"
-        android:layout_toRightOf="@+id/imagePoster"
+        android:layout_toRightOf="@+id/image_tracked_Poster"
         android:layout_marginLeft="@dimen/padding"
         android:layout_alignTop="@+id/imagePoster"/>
 
@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:text="@string/nextEpisodeDate"
         android:layout_gravity="center_horizontal"
-        android:layout_toRightOf="@+id/imagePoster"
+        android:layout_toRightOf="@+id/image_tracked_Poster"
         android:layout_marginLeft="@dimen/padding"
         android:layout_marginTop="@dimen/fab_margin"
         android:layout_marginBottom="@dimen/padding"
@@ -49,7 +49,7 @@
         android:layout_marginLeft="@dimen/padding"
         android:layout_marginTop="@dimen/fab_margin"
         android:layout_marginBottom="@dimen/padding"
-        android:layout_below="@id/textTitle"
+        android:layout_below="@id/text_tracked_Title"
         android:textSize="18dp"
         android:layout_alignParentRight="true"
         />
@@ -60,7 +60,7 @@
         android:layout_height="wrap_content"
         android:text="@string/markWatched"
         android:layout_gravity="center_horizontal"
-        android:layout_toRightOf="@+id/imagePoster"
+        android:layout_toRightOf="@+id/image_tracked_Poster"
         android:layout_marginLeft="@dimen/padding"
         android:layout_marginTop="@dimen/padding"
         android:layout_below="@id/textNextDate"
@@ -72,7 +72,7 @@
         android:layout_height="wrap_content"
         android:text="@string/allEpisodes"
         android:layout_gravity="center_horizontal"
-        android:layout_toRightOf="@+id/imagePoster"
+        android:layout_toRightOf="@+id/image_tracked_Poster"
         android:layout_marginLeft="@dimen/padding"
         android:layout_below="@id/buttonMarkWatched"
         android:layout_alignRight="@id/buttonMarkWatched"

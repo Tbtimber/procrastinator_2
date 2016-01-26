@@ -13,7 +13,7 @@ public class ProcrastinatorDataBaseHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
 
     // database name
-    private static final String DATABASE_NAME = "movies.db";
+    private static final String DATABASE_NAME = "procrastinator.db";
 
     public ProcrastinatorDataBaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

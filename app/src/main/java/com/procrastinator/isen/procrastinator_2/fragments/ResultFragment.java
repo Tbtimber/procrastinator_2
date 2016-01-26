@@ -50,9 +50,6 @@ public class ResultFragment extends android.support.v4.app.Fragment implements S
             GridViewAdapter adapter = new GridViewAdapter(getActivity(), results);
             mGridView.setAdapter(adapter);
             mGridView.setOnItemClickListener(this);
-            for (SearchResult r:results) {
-                Log.v("GridView : " , r.getTitle());
-            }
         }
     }
     @Override
@@ -87,6 +84,11 @@ public class ResultFragment extends android.support.v4.app.Fragment implements S
                 ActionBar.LayoutParams.WRAP_CONTENT, Gravity.CENTER));
         progressBar.setIndeterminate(true);
         mGridView.setEmptyView(progressBar);
+
+        ViewGroup root = (ViewGroup) rootView.findViewById(R.id.fragment_result_root);
+        root.addView(progressBar);
+        root.setBackgroundColor(getResources().getColor(R.color.transparent));
+
         return rootView;
     }
 

@@ -22,6 +22,10 @@
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <provider
+            android:authorities="com.procrastinator.isen.procrastinator_2.databaseAuthority"
+            android:name="com.procrastinator.isen.procrastinator_2.providers.ProcrastinatorDatabaseProvider"
+            android:exported="false"/>
     </application>
 
 </manifest>
