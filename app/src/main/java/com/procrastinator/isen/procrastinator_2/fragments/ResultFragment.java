@@ -32,6 +32,18 @@ public class ResultFragment extends android.support.v4.app.Fragment implements S
     private MainActivityListener mainActivityListener;
     private GetMoviesAsync moviesAsync;
 
+
+
+    public void newSearch(String query) {
+        if(!moviesAsync.isCancelled())
+            moviesAsync.cancel(true);
+        moviesAsync = new GetMoviesAsync(this);
+        if(query == null) {
+            query = "";
+        }
+        moviesAsync.execute(Proc_Constants.API_URL_MOVIE, query);
+    }
+
     @Override
     public void onSelectionRetrieved(List<SearchResult> results) {
         if(results != null) {

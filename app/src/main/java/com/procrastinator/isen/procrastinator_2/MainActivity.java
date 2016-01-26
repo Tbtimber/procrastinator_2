@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethod;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.SearchView;
 
 import com.procrastinator.isen.procrastinator_2.fragments.DetailSearchFragment;
 import com.procrastinator.isen.procrastinator_2.fragments.DetailViewFragment;
@@ -74,17 +75,18 @@ public class MainActivity extends AppCompatActivity
             return true;
         }
         if (id == R.id.search_button) {
-            if(currentFragment instanceof DetailSearchFragment) {
-                setDetailSearchFragment();
-            } else {
-                detachCurrentFragment();
-                setResultFragment();
-            }
+            search();
         }
 
         return super.onOptionsItemSelected(item);
     }
-
+    public void search() {
+        if(currentFragment instanceof DetailSearchFragment) {
+            setDetailSearchFragment();
+        } else {
+            setResultFragment();
+        }
+    }
 
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -125,7 +127,12 @@ public class MainActivity extends AppCompatActivity
     }
     public void setResultFragment() {
         if(currentFragment != null) {
-            detachCurrentFragment();
+            if(currentFragment instanceof ResultFragment) {
+                ((ResultFragment) currentFragment).newSearch(((SearchView) findViewById(R.id.test_searchBar)).getQuery().toString());
+                return;
+            } else {
+                detachCurrentFragment();
+            }
         }
         if(detailViewFragment != null) {
             removeDetailViewFragment();
@@ -134,9 +141,10 @@ public class MainActivity extends AppCompatActivity
         android.support.v4.app.FragmentManager manager = getSupportFragmentManager();
         android.support.v4.app.FragmentTransaction transaction = manager.beginTransaction();
 
+        String str = ((SearchView) findViewById(R.id.test_searchBar)).getQuery().toString();
         currentFragment = new ResultFragment();
         final Bundle bundle = new Bundle();
-        bundle.putString("search_string", ((EditText) findViewById(R.id.test_searchBar)).getText().toString());
+        bundle.putString("search_string", str);
         currentFragment.setArguments(bundle);
         transaction.add(R.id.main_container, currentFragment).commit();
 
@@ -191,6 +199,23 @@ public class MainActivity extends AppCompatActivity
         View customNav = LayoutInflater.from(this).inflate(R.layout.search_bar, null);
 
         abar.setCustomView(customNav);
+
+        SearchView searchview = (SearchView) findViewById(R.id.test_searchBar);
+        if(searchview != null) {
+            searchview.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    search();
+                    return false;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String newText) {
+                    search();
+                    return false;
+                }
+            });
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
