@@ -21,7 +21,6 @@ import java.util.List;
  * Created by Matthieu on 21/01/2016.
  */
 public class SelectionAdapterView extends RecyclerView.Adapter<SelectionAdapterView.ViewHolder> {
-    private ImageMemoryCache mMemoryCache;
     private List<SearchResult> mMovies;
     private LayoutInflater mInflater;
     private MainActivityListener mainActivityListener;
@@ -42,9 +41,9 @@ public class SelectionAdapterView extends RecyclerView.Adapter<SelectionAdapterV
     public void onBindViewHolder(ViewHolder holder, int position) {
         SearchResult item = mMovies.get(position);
 
-        final Bitmap bm = mMemoryCache.getBitmapFromMemCache(item.poster_path);
+        final Bitmap bm = ImageMemoryCache.getBitmapFromMemCache(item.poster_path);
         if(null == bm) {
-            new DownloadImageAsyncTask(holder.pic, mMemoryCache).execute(item.poster_path);
+            new DownloadImageAsyncTask(holder.pic).execute(item.poster_path);
         } else {
             holder.pic.setImageBitmap(bm);
         }
@@ -60,7 +59,6 @@ public class SelectionAdapterView extends RecyclerView.Adapter<SelectionAdapterV
         mInflater = LayoutInflater.from(context);
         final int maxMemory = (int) (Runtime.getRuntime().maxMemory())/1024;
         final int cacheSize = maxMemory/16;
-        mMemoryCache = new ImageMemoryCache(cacheSize);
     }
 
 

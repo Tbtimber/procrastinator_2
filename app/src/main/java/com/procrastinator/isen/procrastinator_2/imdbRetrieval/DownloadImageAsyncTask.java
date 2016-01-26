@@ -13,11 +13,10 @@ public class DownloadImageAsyncTask extends AsyncTask<String, Void, Bitmap> {
     private final ImageView mImageView;
 
     // The cache object
-    private final ImageMemoryCache mImageMemoryCache;
 
-    public DownloadImageAsyncTask (ImageView imageView, ImageMemoryCache imageMemoryCache){
+
+    public DownloadImageAsyncTask (ImageView imageView){
         mImageView = imageView;
-        mImageMemoryCache = imageMemoryCache;
     }
 
     @Override
@@ -29,9 +28,8 @@ public class DownloadImageAsyncTask extends AsyncTask<String, Void, Bitmap> {
                 final Bitmap bitmap = IMDbSearchHelper.getSearchResultImage(imageUrl);
 
                 // Add to cache
-                if (null != mImageMemoryCache){
-                    mImageMemoryCache.addBitmapToMemoryCache(imageUrl, bitmap);
-                }
+                ImageMemoryCache.addBitmapToMemoryCache(imageUrl, bitmap);
+
 
                 return bitmap;
             } catch (Exception e) {

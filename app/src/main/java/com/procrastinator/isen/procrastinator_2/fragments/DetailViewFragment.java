@@ -50,7 +50,7 @@ public class DetailViewFragment extends android.support.v4.app.Fragment {
 
         if(url != null) {
             ImageView imgV = (ImageView) rootView.findViewById(R.id.imagePoster);
-            new DownloadImageAsyncTask(imgV, null).execute(url);
+            new DownloadImageAsyncTask(imgV).execute(url);
         }
         if(overview != null) {
             TextView ovTV = (TextView) rootView.findViewById(R.id.textSummary);

@@ -24,4 +24,9 @@ public class GetSeriesAsync extends AsyncTask<String, Void, List<SearchResult>> 
     protected void onPostExecute(List<SearchResult> result){
         mListener.onSelectionRetrieved(result);
     }
+
+    @Override
+    protected void onCancelled(List<SearchResult> searchResults) {
+        mListener.onSelectionRetrieved(searchResults);
+    }
 }

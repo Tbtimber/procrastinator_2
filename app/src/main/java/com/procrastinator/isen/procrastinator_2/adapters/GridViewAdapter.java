@@ -21,15 +21,11 @@ import java.util.List;
  */
 public class GridViewAdapter extends BaseAdapter {
     private List<SearchResult> mMovies;
-    private ImageMemoryCache mMemoryCache;
     private LayoutInflater mInflater;
 
     public GridViewAdapter(Context context, List<SearchResult> mMovies) {
         this.mMovies = mMovies;
         mInflater = LayoutInflater.from(context);
-        final int maxMemory = (int) (Runtime.getRuntime().maxMemory())/1024;
-        final int cacheSize = maxMemory/16;
-        mMemoryCache = new ImageMemoryCache(cacheSize);
     }
 
     @Override
@@ -59,9 +55,9 @@ public class GridViewAdapter extends BaseAdapter {
         }
 
         final SearchResult item = (SearchResult) getItem(position);
-        final Bitmap bm = mMemoryCache.getBitmapFromMemCache(item.poster_path);
+        final Bitmap bm = ImageMemoryCache.getBitmapFromMemCache(item.poster_path);
         if(null == bm) {
-            new DownloadImageAsyncTask(holder.pic, mMemoryCache).execute(item.poster_path);
+            new DownloadImageAsyncTask(holder.pic).execute(item.poster_path);
         } else {
             holder.pic.setImageBitmap(bm);
         }
