@@ -24,6 +24,11 @@ public class SelectionsFragment extends android.support.v4.app.Fragment implemen
 
 
     @Override
+    public void searchWithDetail(String s) {
+
+    }
+
+    @Override
     public void onAttach(Context context) {
         super.onAttach(context);
 

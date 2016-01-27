@@ -86,13 +86,16 @@ public class DetailViewFragment extends android.support.v4.app.Fragment implemen
 
     @Override
     public void onClick(View v) {
-        //mainActivityListener.hasTracked(searchResult.getTitle());
+        if(searchResult != null) {
+            mainActivityListener.hasTracked(searchResult.getTitle());
+        }
         //TODO insert searchResult To DB
         //List<SearchResult> list = new ArrayList<>();
         //list.add(searchResult);
         final ProcrastinatorDataBaseHelper dbHelper = new ProcrastinatorDataBaseHelper(getContext());
         final SQLiteDatabase db = dbHelper.getWritableDatabase();
         db.insert(ProcrastinatorDatabaseContract.TABLE_MOVIES,"", ProcrastinatorDatabaseManager.movieToContentValues(searchResult));
+
     }
 
 }

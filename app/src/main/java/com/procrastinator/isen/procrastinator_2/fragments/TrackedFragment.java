@@ -86,16 +86,17 @@ public class TrackedFragment extends Fragment implements AdapterView.OnItemClick
             }
         }
         TrackedAdapterView adapterView = new TrackedAdapterView(getContext(),mList);
+        mListView.setOnItemClickListener(this);
         mListView.setAdapter(adapterView);
         return rootView;
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        /*if(null != mainActivityListener) {
+        if(null != mainActivityListener) {
             final SearchResult result = (SearchResult) parent.getItemAtPosition((int)id);
             mainActivityListener.showDetail(result);
-        }*/
+        }
     }
 
 }

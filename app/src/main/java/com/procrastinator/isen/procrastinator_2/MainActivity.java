@@ -85,12 +85,14 @@ public class MainActivity extends AppCompatActivity
     }
     public void search() {
         if(currentFragment instanceof DetailSearchFragment) {
-            setDetailSearchFragment();
+            searchWithDetails();
         } else {
             setResultFragment();
         }
     }
-
+    public void searchWithDetails() {
+        //TODO implements method
+    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -112,11 +114,7 @@ public class MainActivity extends AppCompatActivity
                 setTrackedFragment();
             }
         } else if (id == R.id.nav_settings) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+            Toast.makeText(this, "Soon available ;)", Toast.LENGTH_LONG).show();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -161,6 +159,15 @@ public class MainActivity extends AppCompatActivity
     public void setResultFragmentWithDetail() {
         //TODO implement method
     }
+    @Override
+    public void searchWithDetail(String query) {
+        currentFragment = new ResultFragment();
+        final Bundle bundle = new Bundle();
+        bundle.putString("query", query);
+        currentFragment.setArguments(bundle);
+
+        placeNewFragment();
+    }
     public void removeDetailViewFragment() {
         android.support.v4.app.FragmentManager manager = getSupportFragmentManager();
         android.support.v4.app.FragmentTransaction transaction = manager.beginTransaction();
@@ -200,7 +207,7 @@ public class MainActivity extends AppCompatActivity
         transaction.add(R.id.main_container, currentFragment, "selections_fragment");
         transaction.commit();*/
     }
-    public void setupMenuDrawerAndResearchBar() {
+     public void setupMenuDrawerAndResearchBar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -257,8 +264,8 @@ public class MainActivity extends AppCompatActivity
 
         android.support.v4.app.FragmentManager manager = getSupportFragmentManager();
         android.support.v4.app.FragmentTransaction transaction = manager.beginTransaction();
-        transaction.add(R.id.main_container, detailViewFragment, "selections_fragment");
         transaction.setCustomAnimations(R.anim.enter_anim, R.anim.exit_anim);
+        transaction.add(R.id.main_container, detailViewFragment, "selections_fragment");
         transaction.commit();
     }
     @Override

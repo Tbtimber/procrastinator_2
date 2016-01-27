@@ -31,8 +31,7 @@ public class ResultFragment extends android.support.v4.app.Fragment implements S
     private GridView mGridView;
     private MainActivityListener mainActivityListener;
     private GetMoviesAsync moviesAsync;
-
-
+    private boolean isDetailed;
 
     public void newSearch(String query) {
         if(!moviesAsync.isCancelled())
@@ -64,7 +63,11 @@ public class ResultFragment extends android.support.v4.app.Fragment implements S
     public void onStart() {
         super.onStart();
         moviesAsync = new GetMoviesAsync(this);
-        moviesAsync.execute(Proc_Constants.API_URL_MOVIE, resultString);
+        if(isDetailed) {
+            moviesAsync.execute(resultString, "");
+        } else {
+            moviesAsync.execute(Proc_Constants.API_URL_MOVIE, resultString);
+        }
     }
 
 
@@ -75,7 +78,16 @@ public class ResultFragment extends android.support.v4.app.Fragment implements S
 
         resultString = getArguments().getString("search_string");
         if(resultString == null) {
-            resultString = "test";
+            resultString = getArguments().getString("query");
+            if(resultString == null) {
+                isDetailed = false;
+                resultString = "test";
+            } else {
+                isDetailed = true;
+            }
+
+        } else {
+            isDetailed = false;
         }
 
         mGridView = (GridView) rootView.findViewById(R.id.result_grid_view);

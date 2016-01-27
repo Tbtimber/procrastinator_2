@@ -2,6 +2,7 @@ package com.procrastinator.isen.procrastinator_2.adapters;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,12 +10,15 @@ import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.CursorAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.procrastinator.isen.procrastinator_2.R;
+import com.procrastinator.isen.procrastinator_2.database.ProcrastinatorDataBaseHelper;
+import com.procrastinator.isen.procrastinator_2.database.ProcrastinatorDatabaseContract;
 import com.procrastinator.isen.procrastinator_2.imdbRetrieval.DownloadImageAsyncTask;
 import com.procrastinator.isen.procrastinator_2.imdbRetrieval.ImageMemoryCache;
 import com.procrastinator.isen.procrastinator_2.imdbRetrieval.SearchResult;
@@ -29,10 +33,12 @@ import java.util.List;
 public class TrackedAdapterView extends BaseAdapter {
     private List<SearchResult> mMovies;
     private LayoutInflater mInflater;
+    private Context mContext;
 
     public TrackedAdapterView(Context context,List<SearchResult> searchResults) {
         this.mMovies = searchResults;
         mInflater = LayoutInflater.from(context);
+        this.mContext = context;
     }
 
     @Override
@@ -69,7 +75,15 @@ public class TrackedAdapterView extends BaseAdapter {
             holder.pic.setImageBitmap(bm);
         }
         holder.title.setText(item.getTitle());
-
+        holder.untracked.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final ProcrastinatorDataBaseHelper dbHelper = new ProcrastinatorDataBaseHelper(mContext);
+                final SQLiteDatabase db = dbHelper.getWritableDatabase();
+                //TODO Not working yet ...
+                //db.delete(ProcrastinatorDatabaseContract.TABLE_MOVIES, ProcrastinatorDatabaseContract.TITLE + " = " + item.getTitle(), null);
+            }
+        });
         return convertView;
 
     }
@@ -77,11 +91,12 @@ public class TrackedAdapterView extends BaseAdapter {
     private class ViewHolder {
         private ImageView pic;
         private TextView title;
-
+        private Button untracked;
         public ViewHolder(View view) {
 
             this.pic = (ImageView) view.findViewById(R.id.image_tracked_Poster);
             this.title = (TextView) view.findViewById(R.id.text_tracked_Title);
+            this.untracked = (Button) view.findViewById(R.id.buttonStopTracking);
         }
     }
 }

@@ -3,7 +3,7 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="@dimen/size_of_layout"
-    android:background="@color/colorGrey"
+    android:background="@color/transparent_grey_white"
     android:padding="@dimen/padding"
     >
 
@@ -30,14 +30,15 @@
         android:id="@+id/textNextDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/nextEpisodeDate"
+
         android:layout_gravity="center_horizontal"
         android:layout_toRightOf="@+id/image_tracked_Poster"
         android:layout_marginLeft="@dimen/padding"
-        android:layout_marginTop="@dimen/fab_margin"
+
         android:layout_marginBottom="@dimen/padding"
         android:layout_below="@id/textTitle"
         android:textSize="18dp"
+        android:layout_marginTop="30dp"
         />
 
     <TextView
@@ -52,30 +53,6 @@
         android:layout_below="@id/text_tracked_Title"
         android:textSize="18dp"
         android:layout_alignParentRight="true"
-        />
-
-    <Button
-        android:id="@+id/buttonMarkWatched"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/markWatched"
-        android:layout_gravity="center_horizontal"
-        android:layout_toRightOf="@+id/image_tracked_Poster"
-        android:layout_marginLeft="@dimen/padding"
-        android:layout_marginTop="@dimen/padding"
-        android:layout_below="@id/textNextDate"
-        />
-
-    <Button
-        android:id="@+id/buttonAllEpisodes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/allEpisodes"
-        android:layout_gravity="center_horizontal"
-        android:layout_toRightOf="@+id/image_tracked_Poster"
-        android:layout_marginLeft="@dimen/padding"
-        android:layout_below="@id/buttonMarkWatched"
-        android:layout_alignRight="@id/buttonMarkWatched"
         />
 
     <Button

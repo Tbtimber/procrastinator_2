@@ -173,6 +173,16 @@
         android:layout_toRightOf="@+id/textView_year"
         android:layout_toEndOf="@+id/textView_year"
         android:layout_alignBaseline="@+id/textView_year"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Search"
+        android:background="@drawable/orange_round_corners_background"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/textView_year"
+        android:layout_marginRight="5dp"
+        android:id="@+id/detail_search_b"
+        />
 
 
 </RelativeLayout>

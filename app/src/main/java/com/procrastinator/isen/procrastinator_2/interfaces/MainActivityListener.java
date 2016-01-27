@@ -11,5 +11,6 @@ public interface MainActivityListener {
     void showDetail(SearchResult detail);
     void dropDetail();
     void hasTracked(String title);
+    void searchWithDetail(String s);
 }
 
