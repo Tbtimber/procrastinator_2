@@ -18,5 +18,5 @@
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:src="@drawable/logo_appli_procrastinator" />
 
-    
+
 </LinearLayout>

@@ -81,7 +81,7 @@ public class TrackedAdapterView extends BaseAdapter {
                 final ProcrastinatorDataBaseHelper dbHelper = new ProcrastinatorDataBaseHelper(mContext);
                 final SQLiteDatabase db = dbHelper.getWritableDatabase();
                 //TODO Not working yet ...
-                //db.delete(ProcrastinatorDatabaseContract.TABLE_MOVIES, ProcrastinatorDatabaseContract.TITLE + " = " + item.getTitle(), null);
+                db.delete(ProcrastinatorDatabaseContract.TABLE_MOVIES, ProcrastinatorDatabaseContract.TITLE + " = " + "'" + item.getTitle() + "'", null);
             }
         });
         return convertView;
